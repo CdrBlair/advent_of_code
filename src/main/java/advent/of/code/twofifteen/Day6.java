@@ -8,9 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import advent.of.code.twofifteen.Day6.Coordinate;
-import advent.of.code.twofifteen.Day6.Instruction;
-
 public class Day6 {
 
     final String TURNED_ON = "*";
