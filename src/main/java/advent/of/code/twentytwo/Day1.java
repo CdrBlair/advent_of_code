@@ -31,7 +31,7 @@ public class Day1 {
 				}
 			});
 
-			Collections.sort(listOfPackaged, Collections.reverseOrder());
+			listOfPackaged.sort(Collections.reverseOrder());
 
 
 			System.out.println(listOfPackaged);

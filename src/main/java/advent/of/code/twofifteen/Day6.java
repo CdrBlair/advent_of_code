@@ -11,8 +11,6 @@ import java.util.Map;
 public class Day6 {
 
     final String TURNED_ON = "*";
-    final String TURNED_OFF = " ";
-
     final String TOGGLE = "toggle";
     final String TURN_ON = "+";
     final String TURN_OFF = "-";
@@ -27,7 +25,7 @@ public class Day6 {
             }
 
         }
-        System.out.println(lightGrid.values().stream().filter(s -> s.equals(TURNED_ON)).toList().size());
+
 
         try (var br = new BufferedReader(new FileReader(
                 "/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/lightToggle.txt"));) {
@@ -48,21 +46,21 @@ public class Day6 {
 
                 if (action.equals(TOGGLE)) {
                     instructions.add(new Instruction(action,
-                            new Coordinate(Integer.valueOf(splittedLine[1].split(",")[0]),
-                                    Integer.valueOf(splittedLine[1].split(",")[1])),
-                            new Coordinate(Integer.valueOf(splittedLine[3].split(",")[0]),
-                                    Integer.valueOf(splittedLine[3].split(",")[1]))));
+                            new Coordinate(Integer.parseInt(splittedLine[1].split(",")[0]),
+                                    Integer.parseInt(splittedLine[1].split(",")[1])),
+                            new Coordinate(Integer.parseInt(splittedLine[3].split(",")[0]),
+                                    Integer.parseInt(splittedLine[3].split(",")[1]))));
                 } else {
                     instructions.add(new Instruction(action,
-                            new Coordinate(Integer.valueOf(splittedLine[2].split(",")[0]),
-                                    Integer.valueOf(splittedLine[2].split(",")[1])),
-                            new Coordinate(Integer.valueOf(splittedLine[4].split(",")[0]),
-                                    Integer.valueOf(splittedLine[4].split(",")[1]))));
+                            new Coordinate(Integer.parseInt(splittedLine[2].split(",")[0]),
+                                    Integer.parseInt(splittedLine[2].split(",")[1])),
+                            new Coordinate(Integer.parseInt(splittedLine[4].split(",")[0]),
+                                    Integer.parseInt(splittedLine[4].split(",")[1]))));
                 }
 
             });
 
-            instructions.stream().forEach(inst -> {
+            instructions.forEach(inst -> {
                 System.out.println(inst);
                 for (var i = inst.start().x(); i <= inst.end().x(); i++) {
                     for (var j = inst.start().y(); j <= inst.end().y(); j++) {

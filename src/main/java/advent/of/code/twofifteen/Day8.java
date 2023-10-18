@@ -1,12 +1,13 @@
 package advent.of.code.twofifteen;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
 
 public class Day8 {
 
@@ -16,9 +17,9 @@ public class Day8 {
                 "/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/escapeStrings.txt"));) {
 
             List<String> lines = br.lines().collect(Collectors.toList());
-            List<String> linesCopy = lines.stream().collect(Collectors.toList());
+            List<String> linesCopy = new ArrayList<>(lines);
 
-            var sumOfCode = lines.stream().mapToInt(l -> l.length()).sum();
+            var sumOfCode = lines.stream().mapToInt(String::length).sum();
             System.out.println(sumOfCode);
             lines = lines.stream().map(l -> l.substring(1, l.length() - 1)).collect(Collectors.toList());
 
@@ -31,7 +32,7 @@ public class Day8 {
                 // more then one
 
                 var indexOfX = 0;
-                while (indexOfX >= 0) {
+                while (true) {
 
                     indexOfX = StringUtils.indexOf(l, "\\x");
                     if (indexOfX < 0) {
@@ -49,7 +50,7 @@ public class Day8 {
             }).collect(Collectors.toList());
             lines = lines.stream().map(l -> StringUtils.replace(l, "ö", "\\")).collect(Collectors.toList());
             System.out.println(lines);
-            var SumOfText = lines.stream().mapToInt(l -> l.length()).sum();
+            var SumOfText = lines.stream().mapToInt(String::length).sum();
             System.out.println(SumOfText);
 
             result = sumOfCode - SumOfText;
@@ -58,7 +59,7 @@ public class Day8 {
             linesCopy = linesCopy.stream().map(l -> StringUtils.replace(l, "\"", "\\\"")).collect(Collectors.toList());
             linesCopy = linesCopy.stream().map(l -> "\"" + l + "\"").collect(Collectors.toList());
 
-            var sumOfCode2 = linesCopy.stream().mapToInt(l -> l.length()).sum();
+            var sumOfCode2 = linesCopy.stream().mapToInt(String::length).sum();
 
             result = sumOfCode2 - sumOfCode;
 

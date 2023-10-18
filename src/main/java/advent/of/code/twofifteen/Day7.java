@@ -1,14 +1,13 @@
 package advent.of.code.twofifteen;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
 
 public class Day7 {
 
@@ -20,9 +19,9 @@ public class Day7 {
         try (var br = new BufferedReader(new FileReader(
                 "/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/wires.txt"));) {
 
-            List<String> lines = br.lines().collect(Collectors.toList());
+            List<String> lines = br.lines().toList();
 
-            lines.stream().forEach(l -> {
+            lines.forEach(l -> {
 
                 String[] splittedLine = l.split(" -> ");
                 wires.put(splittedLine[1], null);
@@ -56,7 +55,7 @@ public class Day7 {
 
             });
 
-            wires.keySet().stream().forEach(w -> {
+            wires.keySet().forEach(w -> {
                 if (wires.get(w) == null) {
                     resolveWire(w);
                 }
@@ -93,52 +92,57 @@ public class Day7 {
                     : wires.get(currentInst.wireB);
         }
 
-        if (currentInst.action.equals("NOT")) {
+        switch (currentInst.action) {
+            case "NOT" -> {
 
-            System.out.println("Bits value before not: " + Integer.toBinaryString(valueWireA));
-            Integer intermediate = ~valueWireA;
+                System.out.println("Bits value before not: " + Integer.toBinaryString(valueWireA));
+                int intermediate = ~valueWireA;
 
-            var binString = Integer.toBinaryString(intermediate);
-            System.out.println("Bits value after not: " + binString);
-            if (binString.length() > 16) {
-                binString = binString.substring(binString.length() - 16);
+                var binString = Integer.toBinaryString(intermediate);
+                System.out.println("Bits value after not: " + binString);
+                if (binString.length() > 16) {
+                    binString = binString.substring(binString.length() - 16);
+                }
+                System.out.println("Bits value after not and slicing: " + binString);
+                wires.put(wire, Integer.valueOf(binString, 2));
             }
-            System.out.println("Bits value after not and slicing: " + binString);
-            wires.put(wire, Integer.valueOf(binString, 2));
-        } else if (currentInst.action.equals("AND")) {
-            Integer intermediate = valueWireA & valueWireB;
-            var binString = Integer.toBinaryString(intermediate);
-            if (binString.length() > 16) {
-                binString = binString.substring(binString.length() - 16);
-            }
-            wires.put(wire, Integer.valueOf(binString, 2));
+            case "AND" -> {
+                int intermediate = valueWireA & valueWireB;
+                var binString = Integer.toBinaryString(intermediate);
+                if (binString.length() > 16) {
+                    binString = binString.substring(binString.length() - 16);
+                }
+                wires.put(wire, Integer.valueOf(binString, 2));
 
-        } else if (currentInst.action.equals("OR")) {
-            Integer intermediate = valueWireA | valueWireB;
-            var binString = Integer.toBinaryString(intermediate);
-            if (binString.length() > 16) {
-                binString = binString.substring(binString.length() - 16);
             }
-            wires.put(wire, Integer.valueOf(binString, 2));
+            case "OR" -> {
+                int intermediate = valueWireA | valueWireB;
+                var binString = Integer.toBinaryString(intermediate);
+                if (binString.length() > 16) {
+                    binString = binString.substring(binString.length() - 16);
+                }
+                wires.put(wire, Integer.valueOf(binString, 2));
 
-        } else if (currentInst.action.equals("LSHIFT")) {
-            Integer intermediate = valueWireA << valueWireB;
-            var binString = Integer.toBinaryString(intermediate);
-            if (binString.length() > 16) {
-                binString = binString.substring(binString.length() - 16);
             }
-            wires.put(wire, Integer.valueOf(binString, 2));
+            case "LSHIFT" -> {
+                int intermediate = valueWireA << valueWireB;
+                var binString = Integer.toBinaryString(intermediate);
+                if (binString.length() > 16) {
+                    binString = binString.substring(binString.length() - 16);
+                }
+                wires.put(wire, Integer.valueOf(binString, 2));
 
-        } else if (currentInst.action.equals("RSHIFT")) {
-            Integer intermediate = valueWireA >> valueWireB;
-            var binString = Integer.toBinaryString(intermediate);
-            if (binString.length() > 16) {
-                binString = binString.substring(binString.length() - 16);
             }
-            wires.put(wire, Integer.valueOf(binString, 2));
+            case "RSHIFT" -> {
+                int intermediate = valueWireA >> valueWireB;
+                var binString = Integer.toBinaryString(intermediate);
+                if (binString.length() > 16) {
+                    binString = binString.substring(binString.length() - 16);
+                }
+                wires.put(wire, Integer.valueOf(binString, 2));
 
-        } else if (currentInst.action.equals("ASSIGN")) {
-            wires.put(wire, valueWireA);
+            }
+            case "ASSIGN" -> wires.put(wire, valueWireA);
         }
 
     }

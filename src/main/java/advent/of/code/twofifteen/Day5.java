@@ -1,12 +1,12 @@
 package advent.of.code.twofifteen;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.commons.lang3.StringUtils;
 
 public class Day5 {
 
@@ -35,7 +35,7 @@ public class Day5 {
         var forbiddenStrings = Arrays.asList("ab", "cd", "pq", "xy");
         AtomicInteger vowelsCount = new AtomicInteger(0);
 
-        if (StringUtils.containsAny(inputString, forbiddenStrings.toArray(new CharSequence[forbiddenStrings.size()]))) {
+        if (StringUtils.containsAny(inputString, forbiddenStrings.toArray(new CharSequence[0]))) {
             return false;
         }
         vowels.chars().mapToObj(c -> (char) c).forEach(c -> {
@@ -43,8 +43,7 @@ public class Day5 {
         });
 
         var containsDouble = inputString.chars().mapToObj(c -> (char) c)
-                .filter(c -> inputString.contains(c.toString() + c.toString()))
-                .findFirst().isPresent();
+                .anyMatch(c -> inputString.contains(c.toString() + c.toString()));
 
         return vowelsCount.get() > 2 && containsDouble;
 
