@@ -8,6 +8,8 @@ public class Runner {
 
 		Day8 result = new Day8();
 
+		
+
 		System.out.println("result is: " + result.codeToTextdiff());
 
 	}
