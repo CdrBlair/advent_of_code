@@ -16,7 +16,7 @@ public class Day1 {
 	public int findMostCalories() throws FileNotFoundException {
 
 		try (BufferedReader br = new BufferedReader(new FileReader(
-				"/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/calories.txt"));) {
+				"/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/calories.txt"))) {
 
 			List<Integer> listOfPackaged = new ArrayList<>();
 			listOfPackaged.add(0);
@@ -27,15 +27,16 @@ public class Day1 {
 
 				} else {
 					listOfPackaged.set(listOfPackaged.size() - 1,
-							listOfPackaged.get(listOfPackaged.size() - 1) + Integer.valueOf(x));
+							listOfPackaged.get(listOfPackaged.size() - 1) + Integer.parseInt(x));
 				}
 			});
 
 			Collections.sort(listOfPackaged, Collections.reverseOrder());
 
+
 			System.out.println(listOfPackaged);
 
-			return listOfPackaged.stream().limit(3).collect(Collectors.summingInt(Integer::intValue));
+			return listOfPackaged.stream().limit(3).mapToInt(Integer::intValue).sum();
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
