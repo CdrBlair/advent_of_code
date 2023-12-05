@@ -1,15 +1,14 @@
 package advent.of.code;
 
-import advent.of.code.twofifteen.Day15;
+import advent.of.code.twofifteen.Day16;
 
 public class Runner {
 
     public static void main(String[] args) throws Exception {
 
-        Day15 result = new Day15();
+        Day16 result = new Day16();
 
-
-        System.out.println("result is: " + result.calculateBestRecipe());
+        System.out.println("result is: " + result.findSue());
 
     }
 
