@@ -138,7 +138,7 @@ public class Day23 {
             return conjunctions.get(start).get(end);
         } else {
             var max = -1;
-            var i = 0;
+
             for (var conj : conjunctions.get(start).keySet()) {
                 if (!(before.contains(conj))) {
                     var newBefore = new HashSet<>(before);
@@ -154,7 +154,6 @@ public class Day23 {
                     // System.out.println(conjunctions.get(start).keySet());
                     // System.out.println(before);
 
-                    i++;
                 }
             }
             // System.out.println("max " + max);
