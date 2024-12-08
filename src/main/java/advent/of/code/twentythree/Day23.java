@@ -19,7 +19,7 @@ public class Day23 {
 
         var startTime = System.currentTimeMillis();
         try (var br = new BufferedReader(new FileReader(
-                "/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/hikemap.txt"))) {
+                "/Users/amv/work/advent_of_code/advent_of_code/src/main/resources/hikemap.txt"))) {
 
             List<String> linesOfMap = br.lines().toList();
 
@@ -37,12 +37,12 @@ public class Day23 {
             }
 
             // print map
-            for (var i = 0; i < maxY + 1; i++) {
-                for (var j = 0; j < maxX + 1; j++) {
-                    System.out.print(gardeMap.get(new Coordinate(j, i)));
-                }
-                System.out.println();
-            }
+            // for (var i = 0; i < maxY + 1; i++) {
+            //     for (var j = 0; j < maxX + 1; j++) {
+            //         System.out.print(gardeMap.get(new Coordinate(j, i)));
+            //     }
+            //     System.out.println();
+            // }
 
             Coordinate start = new Coordinate(1, 0);
             Map<Coordinate, Map<Coordinate, Integer>> conjunctions = new HashMap<>();
@@ -111,9 +111,9 @@ public class Day23 {
 
                 }
             }
-            for (var conj : conjunctions.entrySet()) {
-                System.out.println(conj.getKey() + " " + conj.getValue());
-            }
+            // for (var conj : conjunctions.entrySet()) {
+            //     System.out.println(conj.getKey() + " " + conj.getValue());
+            // }
             var max = recursiveLengt(new Coordinate(1, 0), new Coordinate(maxX - 1, maxY), conjunctions,
                     new HashSet<>());
 
@@ -138,7 +138,6 @@ public class Day23 {
             return conjunctions.get(start).get(end);
         } else {
             var max = -1;
-
             for (var conj : conjunctions.get(start).keySet()) {
                 if (!(before.contains(conj))) {
                     var newBefore = new HashSet<>(before);
@@ -154,6 +153,7 @@ public class Day23 {
                     // System.out.println(conjunctions.get(start).keySet());
                     // System.out.println(before);
 
+                   
                 }
             }
             // System.out.println("max " + max);
