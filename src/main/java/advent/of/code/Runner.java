@@ -1,14 +1,14 @@
 package advent.of.code;
 
-import advent.of.code.twentythree.Day23;
+import advent.of.code.twentytwo.Day7;
 
 public class Runner {
 
     public static void main(String[] args) throws Exception {
 
-        Day23 result = new Day23();
+        Day7 result = new Day7();
 
-        System.out.println("result is: " + result.getLongestPath());
+        System.out.println("result is: " + result.sizeOfFolders());
 
     }
 

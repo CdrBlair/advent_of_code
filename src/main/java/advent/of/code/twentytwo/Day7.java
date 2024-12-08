@@ -25,7 +25,7 @@ public class Day7 {
 
 		int result = 0;
 		try (var br = new BufferedReader(
-				new FileReader("/Users/amv/work/workspaces/advent_of_code/playground/src/main/resources/shell.txt"));) {
+				new FileReader("/Users/amv/work/advent_of_code/advent_of_code/src/main/resources/shell.txt"));) {
 
 			List<String> lines = br.lines().collect(Collectors.toList());
 
@@ -128,41 +128,29 @@ public class Day7 {
 			return name;
 		}
 
-		public void setName(String name) {
-			this.name = name;
-		}
 
 		public String getType() {
 			return type;
 		}
 
-		public void setType(String type) {
-			this.type = type;
-		}
 
 		public Node getParent() {
 			return parent;
 		}
 
-		public void setParent(Node parent) {
-			this.parent = parent;
-		}
+
 
 		public List<Node> getChilds() {
 			return childs;
 		}
 
-		public void setChilds(List<Node> childs) {
-			this.childs = childs;
-		}
+	
 
 		public int getSize() {
 			return size;
 		}
 
-		public void setSize(int size) {
-			this.size = size;
-		}
+	
 
 		@Override
 		public int hashCode() {
