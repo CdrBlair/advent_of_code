@@ -62,15 +62,14 @@ public class Day16 {
 
 			}
 
-			var maxtime = 30;
-			var pressureSum = 0;
 			var timeToOpen = 1;
 			var best = 0;
 
 			Valve startValve = valveMap.get("AA");
 
-			List<Valve> valvesWithPressure = valveMap.entrySet().stream().map(e -> e.getValue())
-					.filter(v -> v.getFlowRate() > 0).toList();
+			// List<Valve> valvesWithPressure = valveMap.entrySet().stream().map(e ->
+			// e.getValue())
+			// .filter(v -> v.getFlowRate() > 0).toList();
 
 			for (Valve cv : valveMap.values()) {
 
@@ -127,12 +126,12 @@ public class Day16 {
 
 				if (terminal) {
 					if (state.released > best) {
-						System.out.println("new best: " + state);
+						// System.out.println("new best: " + state);
 						best = state.released;
 					}
 				}
 			}
-			System.out.println("part 2: " + best);
+			// System.out.println("part 2: " + best);
 
 			return best;
 		} catch (IOException e) {
@@ -193,13 +192,6 @@ public class Day16 {
 			this.shortestPath = shortestPath;
 		}
 
-		public Valve(String name, int flowRate, Map<Valve, Integer> followUps) {
-			super();
-			this.name = name;
-			this.flowRate = flowRate;
-			this.followUps = followUps;
-		}
-
 		public Valve(String name, int flowRate, Map<Valve, Integer> followUps, boolean open) {
 			super();
 			this.name = name;
@@ -220,40 +212,16 @@ public class Day16 {
 			return this.mapShortest;
 		}
 
-		public void setMapShortest(Map<String, LinkedList<Valve>> mapShortest) {
-			this.mapShortest = mapShortest;
-		}
-
-		public boolean isOpen() {
-			return open;
-		}
-
-		public void setOpen(boolean open) {
-			this.open = open;
-		}
-
 		public String getName() {
 			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
 		}
 
 		public int getFlowRate() {
 			return flowRate;
 		}
 
-		public void setFlowRate(int flowRate) {
-			this.flowRate = flowRate;
-		}
-
 		public Map<Valve, Integer> getFollowUps() {
 			return followUps;
-		}
-
-		public void setFollowUps(Map<Valve, Integer> followUps) {
-			this.followUps = followUps;
 		}
 
 		@Override
@@ -299,10 +267,6 @@ public class Day16 {
 
 		public Set<Valve> getValves() {
 			return valves;
-		}
-
-		public void setValves(Set<Valve> valves) {
-			this.valves = valves;
 		}
 
 		@Override

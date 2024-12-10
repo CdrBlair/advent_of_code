@@ -23,7 +23,6 @@ public class Day11 {
 			List<Monkey> monkeys = new ArrayList<>();
 
 			var numberOfRounds = 10000;
-			var monkeyBusiness = 0;
 			var dividerWorry = 1;
 
 			for (var i = 0; i <= input.size() - 7; i = i + 7) {
@@ -37,7 +36,7 @@ public class Day11 {
 
 			for (var i = 1; i <= numberOfRounds; i++) {
 
-				System.out.println("Round: " + i);
+				// System.out.println("Round: " + i);
 
 				for (Monkey monkey : monkeys) {
 
@@ -73,19 +72,20 @@ public class Day11 {
 
 				}
 
-				var monkeyNumber = 0;
-				for (Monkey monkey : monkeys) {
-					System.out.println("Monkey " + monkeyNumber + ":" + monkey.getItems());
-					monkeyNumber++;
-				}
+				// var monkeyNumber = 0;
+				// for (Monkey monkey : monkeys) {
+				// // System.out.println("Monkey " + monkeyNumber + ":" + monkey.getItems());
+				// monkeyNumber++;
+				// }
 
 			}
 
-			var monkeyNumber = 0;
-			for (Monkey monkey : monkeys) {
-				System.out.println("Monkey " + monkeyNumber + ": inspected " + monkey.getItemsInspected() + " Items");
-				monkeyNumber++;
-			}
+			// var monkeyNumber = 0;
+			// for (Monkey monkey : monkeys) {
+			// // System.out.println("Monkey " + monkeyNumber + ": inspected " +
+			// monkey.getItemsInspected() + " Items");
+			// monkeyNumber++;
+			// }
 
 			List<Integer> activeMonkeys = monkeys.stream().map(Monkey::getItemsInspected)
 					.sorted(Collections.reverseOrder()).limit(2).collect(Collectors.toList());
@@ -138,56 +138,28 @@ public class Day11 {
 			return items;
 		}
 
-		public void setItems(List<Long> items) {
-			this.items = items;
-		}
-
 		public String getOperationType() {
 			return operationType;
-		}
-
-		public void setOperationType(String operationType) {
-			this.operationType = operationType;
 		}
 
 		public int getOperationValue() {
 			return operationValue;
 		}
 
-		public void setOperationValue(int operationValue) {
-			this.operationValue = operationValue;
-		}
-
 		public int getTestValue() {
 			return testValue;
-		}
-
-		public void setTestValue(int testValue) {
-			this.testValue = testValue;
 		}
 
 		public int getFalseThrowTo() {
 			return falseThrowTo;
 		}
 
-		public void setFalseThrowTo(int falseThrowTo) {
-			this.falseThrowTo = falseThrowTo;
-		}
-
 		public int getTrueThrowTo() {
 			return trueThrowTo;
 		}
 
-		public void setTrueThrowTo(int trueThrowTo) {
-			this.trueThrowTo = trueThrowTo;
-		}
-
 		public int getItemsInspected() {
 			return itemsInspected;
-		}
-
-		public void setItemsInspected(int itemsInspected) {
-			this.itemsInspected = itemsInspected;
 		}
 
 		public void incrementItemsInspected() {

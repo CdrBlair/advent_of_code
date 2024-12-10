@@ -22,15 +22,15 @@ public class Day9 {
 			// add start Position
 			visitedPosition.add(new Position(0, 0));
 
-//			Position head = new Position(0, 0);
-//			Position tail = new Position(0, 0);
-//			List<Position> rope = Arrays.asList(head, tail);
+			// Position head = new Position(0, 0);
+			// Position tail = new Position(0, 0);
+			// List<Position> rope = Arrays.asList(head, tail);
 
 			List<Position> rope = new ArrayList<>();
 			IntStream.range(0, 10).forEach(i -> rope.add(new Position(0, 0)));
 
 			List<String> directions = br.lines().toList();
-			System.out.println(rope);
+			// System.out.println(rope);
 
 			for (String direction : directions) {
 				String[] directionArray = StringUtils.split(direction, " ");
@@ -52,13 +52,13 @@ public class Day9 {
 						}
 
 					}
-					System.out.println(rope.get(rope.size() - 1));
+					// System.out.println(rope.get(rope.size() - 1));
 
 					visitedPosition.add(rope.get(rope.size() - 1));
 				}
 			}
 
-			System.out.println(visitedPosition);
+			// System.out.println(visitedPosition);
 			return visitedPosition.size();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -113,21 +113,21 @@ public class Day9 {
 		Position newPosition;
 
 		switch (direction) {
-		case "U":
-			newPosition = new Position(current.getX(), current.getY() + 1);
-			break;
-		case "D":
-			newPosition = new Position(current.getX(), current.getY() - 1);
-			break;
-		case "L":
-			newPosition = new Position(current.getX() - 1, current.getY());
-			break;
-		case "R":
-			newPosition = new Position(current.getX() + 1, current.getY());
-			break;
-		default:
-			newPosition = current;
-			break;
+			case "U":
+				newPosition = new Position(current.getX(), current.getY() + 1);
+				break;
+			case "D":
+				newPosition = new Position(current.getX(), current.getY() - 1);
+				break;
+			case "L":
+				newPosition = new Position(current.getX() - 1, current.getY());
+				break;
+			case "R":
+				newPosition = new Position(current.getX() + 1, current.getY());
+				break;
+			default:
+				newPosition = current;
+				break;
 
 		}
 		return newPosition;
@@ -141,16 +141,8 @@ public class Day9 {
 			return x;
 		}
 
-		public void setX(int x) {
-			this.x = x;
-		}
-
 		public int getY() {
 			return y;
-		}
-
-		public void setY(int y) {
-			this.y = y;
 		}
 
 		@Override

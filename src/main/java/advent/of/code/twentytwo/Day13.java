@@ -43,10 +43,11 @@ public class Day13 {
 			for (List<List<Object>> pairsToCompare : parsedPairs) {
 				var compareResult = comparePairs(pairsToCompare.get(0), pairsToCompare.get(1));
 
-				System.out.println("left: " + pairsToCompare.get(0));
-				System.out.println("right: " + pairsToCompare.get(1));
-				String booleanPrint = (compareResult == 0 || compareResult == 1) ? "true" : "false";
-				System.out.println("result of compare: " + booleanPrint);
+				// System.out.println("left: " + pairsToCompare.get(0));
+				// System.out.println("right: " + pairsToCompare.get(1));
+				// String booleanPrint = (compareResult == 0 || compareResult == 1) ? "true" :
+				// "false";
+				// System.out.println("result of compare: " + booleanPrint);
 
 				if (compareResult == 0 || compareResult == 1) {
 
@@ -63,12 +64,12 @@ public class Day13 {
 			all.add(new2);
 			all.add(new6);
 
-			System.out.println();
-			all.stream().forEach(System.out::println);
+			// System.out.println();
+			// all.stream().forEach(System.out::println);
 			Collections.sort(all, new DecodeComparator());
 
-			System.out.println();
-			all.stream().forEach(System.out::println);
+			// System.out.println();
+			// all.stream().forEach(System.out::println);
 
 			result = (all.indexOf(new2) + 1) * (all.indexOf(new6) + 1);
 
@@ -88,6 +89,7 @@ public class Day13 {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private int comparePairs(List<Object> left, List<Object> right) {
 		var indexRight = 0;
 		for (Object leftObject : left) {

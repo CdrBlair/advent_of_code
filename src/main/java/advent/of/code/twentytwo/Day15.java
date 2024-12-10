@@ -23,10 +23,9 @@ public class Day15 {
 
 			List<Sensor> sensors = lines.stream().map(this::parseSensor).toList();
 
-			sensors.stream().forEach(System.out::println);
+			// sensors.stream().forEach(System.out::println);
 
 			Map<Coordinate, String> caveMap = new HashMap<>();
-			var counter = 0;
 
 			sensors.forEach(s -> caveMap.put(s.getPosition(), "S"));
 			sensors.forEach(s -> caveMap.put(s.getBeacon(), "B"));
@@ -38,8 +37,6 @@ public class Day15 {
 
 				var maxDist = distance(sensor.getPosition(), sensor.getBeacon());
 
-				var found = false;
-
 				// topRound
 				var yDist = sensor.getPosition().getY();
 				for (var i = sensor.getPosition().getX() - maxDist - 1; i < sensor.getPosition().getX() + maxDist
@@ -50,7 +47,7 @@ public class Day15 {
 						final Coordinate current = new Coordinate(i, yDist);
 						if (sensors.stream().allMatch(
 								s -> distance(s.getPosition(), s.getBeacon()) < distance(s.getPosition(), current))) {
-							System.out.println(current);
+							// System.out.println(current);
 							outside.add(current);
 						}
 					}
@@ -63,7 +60,7 @@ public class Day15 {
 
 				}
 
-				System.out.println(outside.size());
+				// System.out.println(outside.size());
 
 				// bottomRound
 				yDist = sensor.getPosition().getY();
@@ -74,7 +71,7 @@ public class Day15 {
 						final Coordinate current = new Coordinate(i, yDist);
 						if (sensors.stream().allMatch(
 								s -> distance(s.getPosition(), s.getBeacon()) < distance(s.getPosition(), current))) {
-							System.out.println(current);
+							// System.out.println(current);
 							outside.add(current);
 						}
 					}
@@ -88,12 +85,12 @@ public class Day15 {
 				}
 			}
 
-			System.out.println(outside.size());
+			// System.out.println(outside.size());
 			BigInteger result = BigInteger.valueOf(outside.stream().toList().get(0).getX())
 					.multiply(BigInteger.valueOf(4000000))
 					.add(BigInteger.valueOf(outside.stream().toList().get(0).getY()));
 
-			System.out.println(result);
+			// System.out.println(result);
 			return result;
 
 		} catch (
@@ -139,16 +136,8 @@ public class Day15 {
 			return position;
 		}
 
-		public void setPosition(Coordinate position) {
-			this.position = position;
-		}
-
 		public Coordinate getBeacon() {
 			return beacon;
-		}
-
-		public void setBeacon(Coordinate beacon) {
-			this.beacon = beacon;
 		}
 
 		@Override
@@ -199,16 +188,8 @@ public class Day15 {
 			return x;
 		}
 
-		public void setX(int x) {
-			this.x = x;
-		}
-
 		public int getY() {
 			return y;
-		}
-
-		public void setY(int y) {
-			this.y = y;
 		}
 
 		@Override

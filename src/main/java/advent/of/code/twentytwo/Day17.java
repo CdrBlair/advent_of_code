@@ -78,58 +78,58 @@ public class Day17 {
 				while (!shapeStopped) {
 
 					switch (jets.get(currentJet)) {
-					case "<": {
-						if (currentBottomLeft.x - 1 == 0) {
+						case "<": {
+							if (currentBottomLeft.x - 1 == 0) {
 
-						} else {
+							} else {
 
-							var move = true;
-							for (var i = 0; i < 4; i++) {
-								for (var j = 0; j < 4; j++) {
+								var move = true;
+								for (var i = 0; i < 4; i++) {
+									for (var j = 0; j < 4; j++) {
 
-									Coordinate collidePoint = new Coordinate(j + currentBottomLeft.x - 1,
-											i + currentBottomLeft.y);
-									if (currenShape.getRocks().get(new Coordinate(j, i))
-											&& !playGround.get(collidePoint).equals(".")) {
-										move = false;
+										Coordinate collidePoint = new Coordinate(j + currentBottomLeft.x - 1,
+												i + currentBottomLeft.y);
+										if (currenShape.getRocks().get(new Coordinate(j, i))
+												&& !playGround.get(collidePoint).equals(".")) {
+											move = false;
 
+										}
 									}
+
 								}
-
+								if (move) {
+									currentBottomLeft = new Coordinate(currentBottomLeft.x - 1, currentBottomLeft.y);
+								}
 							}
-							if (move) {
-								currentBottomLeft = new Coordinate(currentBottomLeft.x - 1, currentBottomLeft.y);
-							}
+							break;
 						}
-						break;
-					}
-					case ">": {
-						if (currentBottomLeft.x + currenShape.outterX + 1 == 8) {
+						case ">": {
+							if (currentBottomLeft.x + currenShape.outterX + 1 == 8) {
 
-						} else {
+							} else {
 
-							var move = true;
-							for (var i = 0; i < 4; i++) {
-								for (var j = 0; j < 4; j++) {
+								var move = true;
+								for (var i = 0; i < 4; i++) {
+									for (var j = 0; j < 4; j++) {
 
-									Coordinate collidePoint = new Coordinate(j + currentBottomLeft.x + 1,
-											i + currentBottomLeft.y);
-									if (currenShape.getRocks().get(new Coordinate(j, i))
-											&& !playGround.get(collidePoint).equals(".")) {
-										move = false;
+										Coordinate collidePoint = new Coordinate(j + currentBottomLeft.x + 1,
+												i + currentBottomLeft.y);
+										if (currenShape.getRocks().get(new Coordinate(j, i))
+												&& !playGround.get(collidePoint).equals(".")) {
+											move = false;
 
+										}
 									}
-								}
 
+								}
+								if (move) {
+									currentBottomLeft = new Coordinate(currentBottomLeft.x + 1, currentBottomLeft.y);
+								}
 							}
-							if (move) {
-								currentBottomLeft = new Coordinate(currentBottomLeft.x + 1, currentBottomLeft.y);
-							}
+							break;
 						}
-						break;
-					}
-					default:
-						break;
+						default:
+							break;
 					}
 					currentJet = (currentJet + 1) % jetMod;
 
@@ -156,28 +156,29 @@ public class Day17 {
 
 					}
 
-//					for (var i = 0; i < 4; i++) {
-//						for (var j = 0; j < 4; j++) {
-//
-//							if (currenShape.getRocks().get(new Coordinate(j, i))) {
-//								playGround.put(new Coordinate(j + currentBottomLeft.x, i + currentBottomLeft.y), "@");
-//							}
-//						}
-//					}
-//
-//					System.out.println(jets.get(currentJet - 1 >= 0 ? currentJet - 1 : 0));
-//					for (var i = currentStackHigh - 1; i >= 0; i--) {
-//						for (var j = leftBorderX; j <= rightBorderX; j++) {
-//							System.out.print(playGround.get(new Coordinate(j, i)));
-//						}
-//						System.out.println();
-//					}
-//					playGround = playGround.entrySet().stream().map(v -> {
-//						if (v.getValue().equals("@")) {
-//							v.setValue(".");
-//						}
-//						return v;
-//					}).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+					// for (var i = 0; i < 4; i++) {
+					// for (var j = 0; j < 4; j++) {
+					//
+					// if (currenShape.getRocks().get(new Coordinate(j, i))) {
+					// playGround.put(new Coordinate(j + currentBottomLeft.x, i +
+					// currentBottomLeft.y), "@");
+					// }
+					// }
+					// }
+					//
+					// System.out.println(jets.get(currentJet - 1 >= 0 ? currentJet - 1 : 0));
+					// for (var i = currentStackHigh - 1; i >= 0; i--) {
+					// for (var j = leftBorderX; j <= rightBorderX; j++) {
+					// System.out.print(playGround.get(new Coordinate(j, i)));
+					// }
+					// System.out.println();
+					// }
+					// playGround = playGround.entrySet().stream().map(v -> {
+					// if (v.getValue().equals("@")) {
+					// v.setValue(".");
+					// }
+					// return v;
+					// }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 				}
 
@@ -205,7 +206,7 @@ public class Day17 {
 					gainedHeight = gainedHeight + comingCycles * deltaHeight;
 
 					rockcounter = rockcounter + comingCycles * deltaRocks;
-					System.out.println(gainedHeight);
+					// System.out.println(gainedHeight);
 
 				}
 				if (rockcounter == 287) {
@@ -223,12 +224,12 @@ public class Day17 {
 
 			}
 
-//			for (var i = currentStackHigh - 1; i >= 0; i--) {
-//				for (var j = leftBorderX; j <= rightBorderX; j++) {
-//					System.out.print(playGround.get(new Coordinate(j, i)));
-//				}
-//				System.out.println();
-//			}
+			// for (var i = currentStackHigh - 1; i >= 0; i--) {
+			// for (var j = leftBorderX; j <= rightBorderX; j++) {
+			// System.out.print(playGround.get(new Coordinate(j, i)));
+			// }
+			// System.out.println();
+			// }
 
 			System.out.println(totalHeigth + gainedHeight);
 			long end = System.currentTimeMillis();
@@ -383,18 +384,6 @@ public class Day17 {
 			return rocks;
 		}
 
-		public void setRocks(Map<Coordinate, Boolean> rocks) {
-			this.rocks = rocks;
-		}
-
-		public int getOutterX() {
-			return outterX;
-		}
-
-		public void setOutterX(int outterX) {
-			this.outterX = outterX;
-		}
-
 		@Override
 		public String toString() {
 			StringBuilder sb = new StringBuilder();
@@ -418,22 +407,6 @@ public class Day17 {
 		public Coordinate(int x, int y) {
 			super();
 			this.x = x;
-			this.y = y;
-		}
-
-		public int getX() {
-			return x;
-		}
-
-		public void setX(int x) {
-			this.x = x;
-		}
-
-		public int getY() {
-			return y;
-		}
-
-		public void setY(int y) {
 			this.y = y;
 		}
 

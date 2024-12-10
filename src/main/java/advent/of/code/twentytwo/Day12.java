@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Day12 {
 
@@ -59,14 +57,14 @@ public class Day12 {
 				map.add(currentMappedRow);
 			}
 
-			for (List<Integer> row : map) {
-				for (Integer point : row) {
-					System.out.print(point);
-					System.out.print(" ");
-				}
-				System.out.println();
+			// for (List<Integer> row : map) {
+			// for (Integer point : row) {
+			// System.out.print(point);
+			// System.out.print(" ");
+			// }
+			// System.out.println();
 
-			}
+			// }
 
 			if (startPos.getxPos() == -1 || targetPos.getxPos() == -1) {
 				throw new IllegalStateException();
@@ -81,11 +79,12 @@ public class Day12 {
 
 			var minLength = lengthOfPathsFromA.stream().filter(i -> i > 0).mapToInt(Integer::intValue).min().getAsInt();
 
-			List<Node> way = getWay(lengthMap.get(minLength));
+			// List<Node> way = getWay(lengthMap.get(minLength));
 
-			AtomicInteger count = new AtomicInteger(0);
+			// AtomicInteger count = new AtomicInteger(0);
 
-			way.stream().forEach(n -> System.out.println("Step" + count.getAndIncrement() + " : " + n));
+			// way.stream().forEach(n -> System.out.println("Step" + count.getAndIncrement()
+			// + " : " + n));
 
 			return minLength;
 
@@ -96,28 +95,28 @@ public class Day12 {
 
 	}
 
-	private List<Node> getWay(Node target) {
+	// private List<Node> getWay(Node target) {
 
-		var lastNode = false;
-		List<Node> way = new ArrayList<>();
-		Node current = target;
+	// var lastNode = false;
+	// List<Node> way = new ArrayList<>();
+	// Node current = target;
 
-		while (!lastNode) {
+	// while (!lastNode) {
 
-			way.add(current);
+	// way.add(current);
 
-			if (current.getParent() == null) {
-				lastNode = true;
-			} else {
-				current = current.getParent();
-			}
+	// if (current.getParent() == null) {
+	// lastNode = true;
+	// } else {
+	// current = current.getParent();
+	// }
 
-		}
-		Collections.reverse(way);
+	// }
+	// Collections.reverse(way);
 
-		return way;
+	// return way;
 
-	}
+	// }
 
 	private int shortestToTarget(Node startPos, Node targetPos, int maxX, int maxY, List<List<Integer>> map) {
 		Queue<Node> nodeQueue = new ArrayDeque<>();
@@ -223,24 +222,12 @@ public class Day12 {
 			return currentSteps;
 		}
 
-		public void setCurrentSteps(int currentSteps) {
-			this.currentSteps = currentSteps;
-		}
-
 		public int getxPos() {
 			return xPos;
 		}
 
-		public void setxPos(int xPos) {
-			this.xPos = xPos;
-		}
-
 		public int getyPos() {
 			return yPos;
-		}
-
-		public void setyPos(int yPos) {
-			this.yPos = yPos;
 		}
 
 		@Override
